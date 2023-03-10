@@ -13,6 +13,10 @@ namespace winrt::winrt_mvvm::implementation
         void OnPropertyChanged(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::Data::PropertyChangedEventArgs const& args);
         void OnNavigatedTo(winrt::Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& args);
         void Button_Click(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::RoutedEventArgs const& e);
+        winrt::Windows::Foundation::Collections::IObservableVector<hstring> Items() const;
+        void Items(winrt::Windows::Foundation::Collections::IObservableVector<hstring> const& items);
+
+    private:
 
 
     private:

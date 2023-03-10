@@ -26,4 +26,29 @@ namespace winrt::winrt_mvvm::implementation
 
 	}
 
+	winrt::Windows::Foundation::Collections::IObservableVector<hstring> ViewModelBase::Items() const
+	{
+		return _items;
+	}
+	void ViewModelBase::Items(winrt::Windows::Foundation::Collections::IObservableVector<hstring> const& items)
+	{
+		_items = items;
+		OnPropertyChanged(L"Items");
+	}
+
+	ViewModelBase::ViewModelBase() : _items(winrt::single_threaded_observable_vector<hstring>())
+	{
+		_items.Append(L"One");
+		_items.Append(L"Two");
+		_items.Append(L"Three");
+		_items.Append(L"Four");
+		_items.Append(L"Five");
+		_items.Append(L"Six");
+		_items.Append(L"Seven");
+		_items.Append(L"Eight");
+
+
+	}
+
+
 }

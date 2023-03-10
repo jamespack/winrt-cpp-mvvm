@@ -24,12 +24,21 @@ namespace winrt::winrt_mvvm::implementation
 
     void ShellViewModel::OnPropertyChanged(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::Data::PropertyChangedEventArgs const& args)
     {
-
+        auto size = ViewModelBase::Items().Size();
+        if (size > 0)
+        {
+            ViewModelBase::Items().RemoveAtEnd();
+        }
+        else {
+            PropertyChanged(_propertyChanged);
+        }
     }
 
     void ShellViewModel::Button_Click(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::RoutedEventArgs const& e)
     {
         HeaderText(L"Button Clicked!");
     }
+
+
 
 }

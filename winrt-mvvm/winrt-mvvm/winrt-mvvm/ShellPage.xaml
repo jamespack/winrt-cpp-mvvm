@@ -11,5 +11,6 @@
     <StackPanel>
         <TextBlock Text="{x:Bind ViewModel.HeaderText, Mode=OneWay}" Style="{StaticResource HeaderTextBlockStyle}"/>
         <Button Content="Change Header" Click="{x:Bind ViewModel.Button_Click}"/>
+        <ListBox ItemsSource="{x:Bind ViewModel.Items}"/>
     </StackPanel>
 </Page>
