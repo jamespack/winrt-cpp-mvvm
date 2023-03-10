@@ -1,0 +1,11 @@
+namespace winrt_mvvm
+{
+	[webhosthidden]
+	[default_interface]
+	unsealed runtimeclass ViewModelBase : Microsoft.UI.Xaml.Data.INotifyPropertyChanged
+	{
+		ViewModelBase();
+		void OnNavigatedTo(Microsoft.UI.Xaml.Navigation.NavigationEventArgs args);
+	}
+
+}

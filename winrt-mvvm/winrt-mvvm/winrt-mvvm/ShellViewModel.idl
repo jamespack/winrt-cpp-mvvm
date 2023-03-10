@@ -1,0 +1,13 @@
+import "ViewModelBase.idl";
+
+namespace winrt_mvvm
+{
+	[default_interface]
+	runtimeclass ShellViewModel : ViewModelBase
+	{
+		ShellViewModel();
+		String HeaderText;
+		void Button_Click(IInspectable sender, Microsoft.UI.Xaml.RoutedEventArgs e);
+
+	}
+}

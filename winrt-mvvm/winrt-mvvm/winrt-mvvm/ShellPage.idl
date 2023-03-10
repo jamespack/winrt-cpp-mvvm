@@ -1,0 +1,11 @@
+import "ShellViewModel.idl";
+
+namespace winrt_mvvm
+{
+    [default_interface]
+    runtimeclass ShellPage : Microsoft.UI.Xaml.Controls.Page
+    {
+        ShellPage();
+        ShellViewModel ViewModel;
+    }
+}

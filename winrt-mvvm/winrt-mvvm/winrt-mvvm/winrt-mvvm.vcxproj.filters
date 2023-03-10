@@ -5,21 +5,54 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="MainWindow.xaml" />
+    <Page Include="ShellPage.xaml">
+      <Filter>Shell\Page</Filter>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl" />
     <Midl Include="MainWindow.idl" />
+    <Midl Include="ViewModelBase.idl">
+      <Filter>ViewModelBase</Filter>
+    </Midl>
+    <Midl Include="ShellViewModel.idl">
+      <Filter>Shell\ViewModel</Filter>
+    </Midl>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
+    <ClCompile Include="ShellViewModel.cpp">
+      <Filter>Shell\ViewModel</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewModelBase.cpp">
+      <Filter>ViewModelBase</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
+    <ClInclude Include="ShellViewModel.h">
+      <Filter>Shell\ViewModel</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewModelBase.h">
+      <Filter>ViewModelBase</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Assets">
       <UniqueIdentifier>{e48dc53e-40b1-40cb-970a-f89935452892}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ViewModelBase">
+      <UniqueIdentifier>{474c7931-3cab-4e94-ab9b-7e9f32f9d8f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shell">
+      <UniqueIdentifier>{3de409b7-2aab-460e-b290-8f565f4dc402}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shell\Page">
+      <UniqueIdentifier>{8cd167d0-b7dc-441d-af6d-5aed94806fdd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shell\ViewModel">
+      <UniqueIdentifier>{1539ef6e-b94b-49ff-af9d-f7f4a703f8fe}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

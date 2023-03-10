@@ -12,6 +12,7 @@ namespace winrt::winrt_mvvm::implementation
         App();
 
         void OnLaunched(Microsoft::UI::Xaml::LaunchActivatedEventArgs const&);
+        virtual void OnNavigationFailed(winrt::Windows::Foundation::IInspectable const& sender, Microsoft::UI::Xaml::Navigation::NavigationFailedEventArgs const&);
 
     private:
         winrt::Microsoft::UI::Xaml::Window window{ nullptr };
