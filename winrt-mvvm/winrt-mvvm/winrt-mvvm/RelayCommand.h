@@ -15,11 +15,12 @@ namespace winrt::winrt_mvvm::implementation
         void CanExecuteChanged(winrt::event_token const& token) noexcept;
         bool CanExecute(winrt::Windows::Foundation::IInspectable const& parameter);
         void Execute(winrt::Windows::Foundation::IInspectable const& parameter);
-    protected:
-        winrt::event<winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable>> _canExecuteChanged;
+
+        void OnCanExecuteChanged();
+
     private:
+        winrt::event<winrt::Windows::Foundation::EventHandler<winrt::Windows::Foundation::IInspectable>> _canExecuteChanged;
         winrt::delegate<IInspectable> _command;
         winrt::delegate<bool(IInspectable)> _canExecute;
-        bool _currentCanExecuteValue;
     };
 }

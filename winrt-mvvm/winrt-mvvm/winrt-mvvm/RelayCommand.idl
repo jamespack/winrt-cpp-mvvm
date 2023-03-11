@@ -4,6 +4,6 @@ namespace winrt_mvvm
 	[webhosthidden]
 	runtimeclass RelayCommand : Microsoft.UI.Xaml.Input.ICommand
 	{
-
+		void OnCanExecuteChanged();
 	}
 }

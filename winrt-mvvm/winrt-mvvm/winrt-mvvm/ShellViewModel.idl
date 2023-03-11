@@ -10,5 +10,6 @@ namespace winrt_mvvm
 		String HeaderText;
 		void Button_Click(IInspectable sender, Microsoft.UI.Xaml.RoutedEventArgs e);
 		RelayCommand ShellViewModelCommand;
+		Boolean IsCommandEnabled;
 	}
 }

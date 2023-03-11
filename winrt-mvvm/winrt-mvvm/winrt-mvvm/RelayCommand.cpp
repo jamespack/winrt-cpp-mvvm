@@ -27,8 +27,14 @@ namespace winrt::winrt_mvvm::implementation
         _command(parameter);
     }
 
+    void RelayCommand::OnCanExecuteChanged()
+    {
+        _canExecuteChanged(*this, nullptr);
+    }
+
+
     RelayCommand::RelayCommand(winrt::delegate<IInspectable> command) : _command(command)
     {}
-    RelayCommand::RelayCommand(winrt::delegate<IInspectable> command, winrt::delegate<bool(IInspectable)> canExecute) : _command(command), _canExecute(canExecute), _currentCanExecuteValue(true)
+    RelayCommand::RelayCommand(winrt::delegate<IInspectable> command, winrt::delegate<bool(IInspectable)> canExecute) : _command(command), _canExecute(canExecute)
     {}
 }

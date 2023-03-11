@@ -21,7 +21,7 @@ namespace winrt::winrt_mvvm::implementation
 
 	}
 
-	void ViewModelBase::OnNavigatedTo(winrt::Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& args)
+	void ViewModelBase::OnNavigatedTo([[maybe_unused]] winrt::Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& args)
 	{
 
 	}
@@ -59,9 +59,10 @@ namespace winrt::winrt_mvvm::implementation
 	void ViewModelBase::DoSomethingCommand(winrt::winrt_mvvm::RelayCommand const& value)
 	{
 		_command = value;
+		OnPropertyChanged(L"DoSomethingCommand");
 	}
 
-	void ViewModelBase::DoSomething(winrt::Windows::Foundation::IInspectable const& parameter)
+	void ViewModelBase::DoSomething([[maybe_unused]] winrt::Windows::Foundation::IInspectable const& parameter)
 	{
 		
 	}

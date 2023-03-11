@@ -34,7 +34,6 @@ namespace winrt::winrt_mvvm::implementation
 
     void ShellPage::OnNavigatedTo(winrt::Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& args)
     {
-        
         _viewModel = winrt_mvvm::ShellViewModel();
         _viewModel.OnNavigatedTo(args);
     }

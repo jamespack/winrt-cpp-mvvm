@@ -5,7 +5,7 @@
 
 namespace winrt::winrt_mvvm::implementation
 {
-    void ShellViewModel::OnNavigatedTo(winrt::Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& args)
+    void ShellViewModel::OnNavigatedTo([[maybe_unused]] winrt::Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& args)
     {
          _propertyChanged = PropertyChanged({ this, &ShellViewModel::OnPropertyChanged });
         _headerText = L"Welcome to Shell Page";
@@ -18,11 +18,11 @@ namespace winrt::winrt_mvvm::implementation
 
     void ShellViewModel::HeaderText(hstring const& value)
     {
-        _headerText = value;
-        ViewModelBase::OnPropertyChanged(L"HeaderText");
+        SetProperty<hstring>(_headerText, value);
+        //ViewModelBase::OnPropertyChanged(L"HeaderText");
     }
 
-    void ShellViewModel::OnPropertyChanged(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::Data::PropertyChangedEventArgs const& args)
+    void ShellViewModel::OnPropertyChanged([[maybe_unused]] winrt::Windows::Foundation::IInspectable const& sender, [[maybe_unused]] winrt::Microsoft::UI::Xaml::Data::PropertyChangedEventArgs const& args)
     {
         auto size = ViewModelBase::Items().Size();
         if (size > 0)
@@ -31,10 +31,11 @@ namespace winrt::winrt_mvvm::implementation
         }
         else {
             PropertyChanged(_propertyChanged);
+            IsCommandEnabled(false);
         }
     }
 
-    void ShellViewModel::Button_Click(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::RoutedEventArgs const& e)
+    void ShellViewModel::Button_Click([[maybe_unused]] winrt::Windows::Foundation::IInspectable const& sender, [[maybe_unused]] winrt::Microsoft::UI::Xaml::RoutedEventArgs const& e)
     {
         HeaderText(L"Button Clicked!");
     }
@@ -44,7 +45,9 @@ namespace winrt::winrt_mvvm::implementation
     {
         winrt::delegate<IInspectable> command{get_strong(), &ShellViewModel::ShellCommand};
         winrt::delegate<bool(IInspectable)> canExecute{ get_strong(), &ShellViewModel::ShellCommandCanExecute};
+        
         ShellViewModelCommand(winrt::make<implementation::RelayCommand>(command, canExecute));
+        
     }
 
 
@@ -56,18 +59,25 @@ namespace winrt::winrt_mvvm::implementation
     {
         _shellCommand = command;
     }
-    void ShellViewModel::ShellCommand(winrt::Windows::Foundation::IInspectable const& parameter)
+    void ShellViewModel::ShellCommand([[maybe_unused]]winrt::Windows::Foundation::IInspectable const& parameter)
     {
 
     }
 
-    bool ShellViewModel::ShellCommandCanExecute(winrt::Windows::Foundation::IInspectable const& parameter)
+    bool ShellViewModel::ShellCommandCanExecute([[maybe_unused]]winrt::Windows::Foundation::IInspectable const& parameter)
     {
-        if (ViewModelBase::Items().Size() < 1)
-        {
-            return false;
-        }
-        return true;
+        return IsCommandEnabled();
+    }
+
+    void ShellViewModel::IsCommandEnabled(bool const& value)
+    {
+        _isCommandEnabled = value;
+        _shellCommand.OnCanExecuteChanged();
+    }
+
+    bool ShellViewModel::IsCommandEnabled() const
+    {
+        return _isCommandEnabled;
     }
 
 }

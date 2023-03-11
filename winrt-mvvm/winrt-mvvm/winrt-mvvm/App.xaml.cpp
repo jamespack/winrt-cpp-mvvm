@@ -66,12 +66,14 @@ void App::OnLaunched(LaunchActivatedEventArgs const&)
         rootFrame.Navigate(xaml_typename<winrt_mvvm::ShellPage>());
         // Place the frame in the current Window
         window.Content(rootFrame);
+
+        
     }
 
     window.Activate();
 }
 
-void App::OnNavigationFailed(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::Navigation::NavigationFailedEventArgs const& args)
+void App::OnNavigationFailed([[maybe_unused]] winrt::Windows::Foundation::IInspectable const& sender, [[maybe_unused]] winrt::Microsoft::UI::Xaml::Navigation::NavigationFailedEventArgs const& args)
 {
 
 }
