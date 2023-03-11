@@ -13,11 +13,15 @@ namespace winrt::winrt_mvvm::implementation
         void OnPropertyChanged(hstring const& propertyName);
         winrt::Windows::Foundation::Collections::IObservableVector<hstring> Items() const;
         void Items(winrt::Windows::Foundation::Collections::IObservableVector<hstring> const& items);
+        winrt::winrt_mvvm::RelayCommand DoSomethingCommand();
+        void DoSomethingCommand(winrt::winrt_mvvm::RelayCommand const& value);
+        void DoSomething(winrt::Windows::Foundation::IInspectable const& parameter);
 
         
     private:
         winrt::event<winrt::Microsoft::UI::Xaml::Data::PropertyChangedEventHandler> _propertyChanged;
         winrt::Windows::Foundation::Collections::IObservableVector<hstring> _items;
+        winrt::winrt_mvvm::RelayCommand _command;
 
     };
 }

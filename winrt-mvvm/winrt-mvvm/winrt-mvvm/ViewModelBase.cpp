@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "ViewModelBase.h"
 #include "ViewModelBase.g.cpp"
-
+#include "RelayCommand.h"
 
 namespace winrt::winrt_mvvm::implementation
 {
@@ -36,19 +36,34 @@ namespace winrt::winrt_mvvm::implementation
 		OnPropertyChanged(L"Items");
 	}
 
-	ViewModelBase::ViewModelBase() : _items(winrt::single_threaded_observable_vector<hstring>())
+	ViewModelBase::ViewModelBase() : _items(winrt::single_threaded_observable_vector<hstring>()), _command(nullptr)
 	{
 		_items.Append(L"One");
 		_items.Append(L"Two");
-		_items.Append(L"Three");
-		_items.Append(L"Four");
-		_items.Append(L"Five");
-		_items.Append(L"Six");
-		_items.Append(L"Seven");
-		_items.Append(L"Eight");
+		//_items.Append(L"Three");
+		//_items.Append(L"Four");
+		//_items.Append(L"Five");
+		//_items.Append(L"Six");
+		//_items.Append(L"Seven");
+		//_items.Append(L"Eight");
 
-
+		auto command = winrt::delegate<IInspectable>{get_weak(), &ViewModelBase::DoSomething};
+		DoSomethingCommand(winrt::make<winrt_mvvm::implementation::RelayCommand>(command));
 	}
 
+	winrt::winrt_mvvm::RelayCommand ViewModelBase::DoSomethingCommand()
+	{
+		return _command;
+	}
+
+	void ViewModelBase::DoSomethingCommand(winrt::winrt_mvvm::RelayCommand const& value)
+	{
+		_command = value;
+	}
+
+	void ViewModelBase::DoSomething(winrt::Windows::Foundation::IInspectable const& parameter)
+	{
+		
+	}
 
 }

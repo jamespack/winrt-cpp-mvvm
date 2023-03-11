@@ -108,6 +108,7 @@
     <ClInclude Include="MainWindow.xaml.h">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </ClInclude>
+    <ClInclude Include="RelayCommand.h" />
     <ClInclude Include="ShellPage.xaml.h">
       <DependentUpon>ShellPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -133,6 +134,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </ClCompile>
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
+    <ClCompile Include="RelayCommand.cpp" />
     <ClCompile Include="ShellPage.xaml.cpp">
       <DependentUpon>ShellPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -149,6 +151,7 @@
       <SubType>Code</SubType>
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Midl>
+    <Midl Include="RelayCommand.idl" />
     <Midl Include="ShellPage.idl">
       <DependentUpon>ShellPage.xaml</DependentUpon>
       <SubType>Code</SubType>

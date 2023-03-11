@@ -10,7 +10,8 @@
 
     <StackPanel>
         <TextBlock Text="{x:Bind ViewModel.HeaderText, Mode=OneWay}" Style="{StaticResource HeaderTextBlockStyle}"/>
-        <Button Content="Change Header" Click="{x:Bind ViewModel.Button_Click}"/>
+        <Button Content="Change Header" Click="{x:Bind ViewModel.Button_Click}" Command="{x:Bind ViewModel.DoSomethingCommand}"/>
         <ListBox ItemsSource="{x:Bind ViewModel.Items}"/>
+        <Button Content="Bound to shell command" Command="{x:Bind ViewModel.ShellViewModelCommand}"/>
     </StackPanel>
 </Page>

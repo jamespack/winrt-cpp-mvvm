@@ -1,0 +1,9 @@
+namespace winrt_mvvm
+{
+	[default_interface]
+	[webhosthidden]
+	runtimeclass RelayCommand : Microsoft.UI.Xaml.Input.ICommand
+	{
+
+	}
+}

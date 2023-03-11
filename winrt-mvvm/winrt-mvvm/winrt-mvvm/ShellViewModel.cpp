@@ -40,5 +40,34 @@ namespace winrt::winrt_mvvm::implementation
     }
 
 
+    ShellViewModel::ShellViewModel() : _shellCommand(nullptr)
+    {
+        winrt::delegate<IInspectable> command{get_strong(), &ShellViewModel::ShellCommand};
+        winrt::delegate<bool(IInspectable)> canExecute{ get_strong(), &ShellViewModel::ShellCommandCanExecute};
+        ShellViewModelCommand(winrt::make<implementation::RelayCommand>(command, canExecute));
+    }
+
+
+    winrt_mvvm::RelayCommand ShellViewModel::ShellViewModelCommand()
+    {
+        return _shellCommand;
+    }
+    void ShellViewModel::ShellViewModelCommand(winrt::winrt_mvvm::RelayCommand const& command)
+    {
+        _shellCommand = command;
+    }
+    void ShellViewModel::ShellCommand(winrt::Windows::Foundation::IInspectable const& parameter)
+    {
+
+    }
+
+    bool ShellViewModel::ShellCommandCanExecute(winrt::Windows::Foundation::IInspectable const& parameter)
+    {
+        if (ViewModelBase::Items().Size() < 1)
+        {
+            return false;
+        }
+        return true;
+    }
 
 }

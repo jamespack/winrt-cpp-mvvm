@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 #pragma once
+#define WINRT_NATVIS
 #include <windows.h>
 #include <unknwn.h>
 #include <restrictederrorinfo.h>
