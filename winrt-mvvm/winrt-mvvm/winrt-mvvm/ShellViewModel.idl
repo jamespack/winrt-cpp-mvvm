@@ -1,5 +1,5 @@
 import "ViewModelBase.idl";
-
+import "MenuEntry.idl";
 
 namespace winrt_mvvm
 {
@@ -9,7 +9,16 @@ namespace winrt_mvvm
 		ShellViewModel();
 		String HeaderText;
 		void Button_Click(IInspectable sender, Microsoft.UI.Xaml.RoutedEventArgs e);
-		RelayCommand ShellViewModelCommand;
+		Microsoft.UI.Xaml.Input.ICommand ShellCommand;
 		Boolean IsCommandEnabled;
+
+		void OnShellLoaded(IInspectable sender, Microsoft.UI.Xaml.RoutedEventArgs args);
+		void OnFrameNavigated(IInspectable sender, Microsoft.UI.Xaml.Navigation.NavigationEventArgs args);
+		void OnNavigtationItemInvoked(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args);
+		void OnBackRequested(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewBackRequestedEventArgs args);
+		Windows.Foundation.Collections.IObservableVector<MenuEntry> NavigationItems;
+		Microsoft.UI.Xaml.Controls.Frame NavigationFrame;
+		Microsoft.UI.Xaml.Controls.NavigationViewItem SelectedItem;
+		Boolean IsBackEnabled;
 	}
 }

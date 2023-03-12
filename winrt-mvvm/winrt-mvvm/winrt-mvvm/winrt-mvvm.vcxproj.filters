@@ -5,9 +5,11 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="MainWindow.xaml" />
-    <Page Include="ShellPage.xaml">
-      <Filter>Shell\Page</Filter>
+    <Page Include="Shell.xaml">
+      <Filter>Shell</Filter>
     </Page>
+    <Page Include="HomePage.xaml" />
+    <Page Include="TestPage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl" />
@@ -20,6 +22,9 @@
     </Midl>
     <Midl Include="RelayCommand.idl">
       <Filter>ViewModelBase\RelayCommand</Filter>
+    </Midl>
+    <Midl Include="MenuEntry.idl">
+      <Filter>Shell\MenuEntry</Filter>
     </Midl>
   </ItemGroup>
   <ItemGroup>
@@ -34,6 +39,9 @@
     <ClCompile Include="RelayCommand.cpp">
       <Filter>ViewModelBase\RelayCommand</Filter>
     </ClCompile>
+    <ClCompile Include="MenuEntry.cpp">
+      <Filter>Shell\MenuEntry</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -46,6 +54,9 @@
     <ClInclude Include="RelayCommand.h">
       <Filter>ViewModelBase\RelayCommand</Filter>
     </ClInclude>
+    <ClInclude Include="MenuEntry.h">
+      <Filter>Shell\MenuEntry</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Assets">
@@ -57,14 +68,14 @@
     <Filter Include="Shell">
       <UniqueIdentifier>{3de409b7-2aab-460e-b290-8f565f4dc402}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Shell\Page">
-      <UniqueIdentifier>{8cd167d0-b7dc-441d-af6d-5aed94806fdd}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Shell\ViewModel">
       <UniqueIdentifier>{1539ef6e-b94b-49ff-af9d-f7f4a703f8fe}</UniqueIdentifier>
     </Filter>
     <Filter Include="ViewModelBase\RelayCommand">
       <UniqueIdentifier>{6b828624-2c7d-4be3-a582-4686f90e6fea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shell\MenuEntry">
+      <UniqueIdentifier>{5614a74f-92db-47f5-b9c7-951e65bf7ffa}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

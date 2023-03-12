@@ -4,8 +4,9 @@
 namespace winrt_mvvm
 {
     [default_interface]
-    runtimeclass MainWindow : Microsoft.UI.Xaml.Window
+    runtimeclass TestPage : Microsoft.UI.Xaml.Controls.Page
     {
-        MainWindow();
+        TestPage();
+        Int32 MyProperty;
     }
 }

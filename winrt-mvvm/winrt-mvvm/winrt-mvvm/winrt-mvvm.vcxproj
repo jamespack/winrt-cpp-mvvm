@@ -101,6 +101,11 @@
     <Manifest Include="app.manifest" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="HomePage.xaml.h">
+      <DependentUpon>HomePage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="MenuEntry.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="App.xaml.h">
       <DependentUpon>App.xaml</DependentUpon>
@@ -109,21 +114,36 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </ClInclude>
     <ClInclude Include="RelayCommand.h" />
-    <ClInclude Include="ShellPage.xaml.h">
-      <DependentUpon>ShellPage.xaml</DependentUpon>
+    <ClInclude Include="Shell.xaml.h">
+      <DependentUpon>Shell.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
     <ClInclude Include="ShellViewModel.h" />
+    <ClInclude Include="TestPage.xaml.h">
+      <DependentUpon>TestPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="ViewModelBase.h" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml" />
+    <Page Include="HomePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml" />
-    <Page Include="ShellPage.xaml">
+    <Page Include="Shell.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TestPage.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="HomePage.xaml.cpp">
+      <DependentUpon>HomePage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="MenuEntry.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
@@ -135,11 +155,15 @@
     </ClCompile>
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
     <ClCompile Include="RelayCommand.cpp" />
-    <ClCompile Include="ShellPage.xaml.cpp">
-      <DependentUpon>ShellPage.xaml</DependentUpon>
+    <ClCompile Include="Shell.xaml.cpp">
+      <DependentUpon>Shell.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
     <ClCompile Include="ShellViewModel.cpp" />
+    <ClCompile Include="TestPage.xaml.cpp">
+      <DependentUpon>TestPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="ViewModelBase.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -147,16 +171,25 @@
       <SubType>Code</SubType>
       <DependentUpon>App.xaml</DependentUpon>
     </Midl>
+    <Midl Include="HomePage.idl">
+      <DependentUpon>HomePage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
     <Midl Include="MainWindow.idl">
       <SubType>Code</SubType>
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Midl>
+    <Midl Include="MenuEntry.idl" />
     <Midl Include="RelayCommand.idl" />
-    <Midl Include="ShellPage.idl">
-      <DependentUpon>ShellPage.xaml</DependentUpon>
+    <Midl Include="Shell.idl">
+      <DependentUpon>Shell.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Midl>
     <Midl Include="ShellViewModel.idl" />
+    <Midl Include="TestPage.idl">
+      <DependentUpon>TestPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
     <Midl Include="ViewModelBase.idl" />
   </ItemGroup>
   <ItemGroup>

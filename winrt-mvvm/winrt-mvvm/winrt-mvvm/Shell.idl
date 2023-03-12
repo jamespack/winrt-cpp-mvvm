@@ -1,0 +1,11 @@
+import "ShellViewModel.idl";
+
+namespace winrt_mvvm
+{
+    [default_interface]
+    runtimeclass Shell : Microsoft.UI.Xaml.Controls.UserControl
+    {
+        Shell();
+        ShellViewModel ViewModel;
+    }
+}

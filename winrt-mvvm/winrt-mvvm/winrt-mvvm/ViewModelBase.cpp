@@ -26,45 +26,8 @@ namespace winrt::winrt_mvvm::implementation
 
 	}
 
-	winrt::Windows::Foundation::Collections::IObservableVector<hstring> ViewModelBase::Items() const
-	{
-		return _items;
-	}
-	void ViewModelBase::Items(winrt::Windows::Foundation::Collections::IObservableVector<hstring> const& items)
-	{
-		_items = items;
-		OnPropertyChanged(L"Items");
-	}
 
-	ViewModelBase::ViewModelBase() : _items(winrt::single_threaded_observable_vector<hstring>()), _command(nullptr)
-	{
-		_items.Append(L"One");
-		_items.Append(L"Two");
-		//_items.Append(L"Three");
-		//_items.Append(L"Four");
-		//_items.Append(L"Five");
-		//_items.Append(L"Six");
-		//_items.Append(L"Seven");
-		//_items.Append(L"Eight");
+	ViewModelBase::ViewModelBase() {}
 
-		auto command = winrt::delegate<IInspectable>{get_weak(), &ViewModelBase::DoSomething};
-		DoSomethingCommand(winrt::make<winrt_mvvm::implementation::RelayCommand>(command));
-	}
-
-	winrt::winrt_mvvm::RelayCommand ViewModelBase::DoSomethingCommand()
-	{
-		return _command;
-	}
-
-	void ViewModelBase::DoSomethingCommand(winrt::winrt_mvvm::RelayCommand const& value)
-	{
-		_command = value;
-		OnPropertyChanged(L"DoSomethingCommand");
-	}
-
-	void ViewModelBase::DoSomething([[maybe_unused]] winrt::Windows::Foundation::IInspectable const& parameter)
-	{
-		
-	}
 
 }

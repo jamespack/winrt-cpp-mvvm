@@ -2,9 +2,9 @@
 // Licensed under the MIT License.
 
 #include "pch.h"
-#include "MainWindow.xaml.h"
-#if __has_include("MainWindow.g.cpp")
-#include "MainWindow.g.cpp"
+#include "Shell.xaml.h"
+#if __has_include("Shell.g.cpp")
+#include "Shell.g.cpp"
 #endif
 
 using namespace winrt;
@@ -15,9 +15,19 @@ using namespace Microsoft::UI::Xaml;
 
 namespace winrt::winrt_mvvm::implementation
 {
-    MainWindow::MainWindow()
+    Shell::Shell()
     {
         InitializeComponent();
+    }
+
+
+    winrt_mvvm::ShellViewModel Shell::ViewModel() const
+    {
+        return _viewModel;
+    }
+    void Shell::ViewModel(winrt_mvvm::ShellViewModel const& value)
+    {
+        _viewModel = value;
     }
 
 }

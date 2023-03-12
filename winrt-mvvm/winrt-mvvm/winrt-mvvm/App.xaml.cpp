@@ -5,7 +5,7 @@
 
 #include "App.xaml.h"
 #include "MainWindow.xaml.h"
-#include "ShellPage.xaml.h"
+#include "Shell.xaml.h"
 
 using namespace winrt;
 using namespace Windows::Foundation;
@@ -27,7 +27,7 @@ App::App()
     InitializeComponent();
 
 #if defined _DEBUG && !defined DISABLE_XAML_GENERATED_BREAK_ON_UNHANDLED_EXCEPTION
-    UnhandledException([this](IInspectable const&, UnhandledExceptionEventArgs const& e)
+    UnhandledException([this](IInspectable const& sender, UnhandledExceptionEventArgs const& e)
     {
         if (IsDebuggerPresent())
         {
@@ -45,31 +45,7 @@ App::App()
 void App::OnLaunched(LaunchActivatedEventArgs const&)
 {
     window = make<MainWindow>();
-    
-    Frame rootFrame{ nullptr };
-
-    auto content = window.Content();
-    if (content)
-    {
-        rootFrame = content.try_as<Frame>();
-    }
-
-    // Don't repeat app initialization when the Window already has content,
-    // just ensure that the window is active
-    if (!rootFrame)
-    {
-        // Create a Frame to act as the navigation context
-        rootFrame = Frame();
-        
-        rootFrame.NavigationFailed({ this, &App::OnNavigationFailed });
-
-        rootFrame.Navigate(xaml_typename<winrt_mvvm::ShellPage>());
-        // Place the frame in the current Window
-        window.Content(rootFrame);
-
-        
-    }
-
+    window.Content(winrt::make<Shell>());
     window.Activate();
 }
 

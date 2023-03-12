@@ -125,7 +125,12 @@ namespace winrt::winrt_mvvm::implementation
     void ShellViewModel::OnNavigtationItemInvoked(winrt::Microsoft::UI::Xaml::Controls::NavigationView const& sender, winrt::Microsoft::UI::Xaml::Controls::NavigationViewItemInvokedEventArgs const& args)
     {
         auto container = args.InvokedItem().try_as<winrt_mvvm::MenuEntry>();
-        NavigationFrame().Navigate(container.PageTypeName());
+        auto name = container.PageTypeName();
+        auto a = args.InvokedItemContainer();
+        winrt::Windows::UI::Xaml::Interop::TypeName typeName;
+        typeName.Name = name.Name;
+        typeName.Kind = winrt::Windows::UI::Xaml::Interop::TypeKind::Custom;
+        NavigationFrame().Navigate(typeName);
     }
     void ShellViewModel::OnBackRequested(winrt::Microsoft::UI::Xaml::Controls::NavigationView const& sender, winrt::Microsoft::UI::Xaml::Controls::NavigationViewBackRequestedEventArgs const& args)
     {

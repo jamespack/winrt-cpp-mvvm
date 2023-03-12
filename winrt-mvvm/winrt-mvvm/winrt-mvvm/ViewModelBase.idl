@@ -9,8 +9,6 @@ namespace winrt_mvvm
 	{
 		ViewModelBase();
 		void OnNavigatedTo(Microsoft.UI.Xaml.Navigation.NavigationEventArgs args);
-		Windows.Foundation.Collections.IObservableVector<String> Items;
-		RelayCommand DoSomethingCommand;
 
 	}
 

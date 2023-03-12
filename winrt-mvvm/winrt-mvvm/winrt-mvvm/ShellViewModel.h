@@ -2,6 +2,10 @@
 #include "ShellViewModel.g.h"
 #include "ViewModelBase.h"
 #include "RelayCommand.h"
+#include "MenuEntry.h"
+
+#include <winrt/Microsoft.UI.Xaml.Controls.h>
+
 
 namespace winrt::winrt_mvvm::implementation
 {
@@ -23,22 +27,45 @@ namespace winrt::winrt_mvvm::implementation
         void OnNavigatedTo(winrt::Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& args);
         
         //Relay Command
-        winrt_mvvm::RelayCommand ShellViewModelCommand();
-        void ShellViewModelCommand(winrt::winrt_mvvm::RelayCommand const& command);
+        winrt::Microsoft::UI::Xaml::Input::ICommand ShellCommand();
+        void ShellCommand(winrt::Microsoft::UI::Xaml::Input::ICommand const& command);
         
         //Relay Command Execute/CanExecute
-        void ShellCommand(winrt::Windows::Foundation::IInspectable const& parameter);
+        void ShellCommandExecute(winrt::Windows::Foundation::IInspectable const& parameter);
         bool ShellCommandCanExecute(winrt::Windows::Foundation::IInspectable const& parameter);
         
         //Relay Command Enabled
         bool IsCommandEnabled() const;
         void IsCommandEnabled(bool const& value);
+
+        void OnShellLoaded(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::RoutedEventArgs const& args);
+
+        void OnFrameNavigated(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& args);
+        bool IsBackEnabled() const;
+        void IsBackEnabled(bool const& value);
         
+        winrt::Microsoft::UI::Xaml::Controls::Frame NavigationFrame() const;
+        void  NavigationFrame(winrt::Microsoft::UI::Xaml::Controls::Frame const& frame);
+
+
+        void OnNavigtationItemInvoked(winrt::Microsoft::UI::Xaml::Controls::NavigationView const& sender, winrt::Microsoft::UI::Xaml::Controls::NavigationViewItemInvokedEventArgs const& args);
+        void OnBackRequested(winrt::Microsoft::UI::Xaml::Controls::NavigationView const& sender, winrt::Microsoft::UI::Xaml::Controls::NavigationViewBackRequestedEventArgs const& args);
+
+        winrt::Windows::Foundation::Collections::IObservableVector<winrt::winrt_mvvm::MenuEntry> NavigationItems() const;
+        void NavigationItems(winrt::Windows::Foundation::Collections::IObservableVector<winrt::winrt_mvvm::MenuEntry> const& items);
+    
+        winrt::Microsoft::UI::Xaml::Controls::NavigationViewItem SelectedItem() const;
+        void SelectedItem(winrt::Microsoft::UI::Xaml::Controls::NavigationViewItem const& item);
+
     private:
+        winrt::Windows::Foundation::Collections::IObservableVector<winrt::winrt_mvvm::MenuEntry> _navigationItems;
         hstring _headerText;
         winrt::event_token _propertyChanged;
-        winrt_mvvm::RelayCommand _shellCommand;
+        winrt::Microsoft::UI::Xaml::Input::ICommand _shellCommand;
+        winrt::Microsoft::UI::Xaml::Controls::Frame _navigationFrame;
         bool _isCommandEnabled = true;
+        bool _isBackEnabled = false;
+        winrt::Microsoft::UI::Xaml::Controls::NavigationViewItem _selectedItem;
     };
 }
 namespace winrt::winrt_mvvm::factory_implementation

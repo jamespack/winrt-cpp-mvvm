@@ -1,0 +1,10 @@
+namespace winrt_mvvm
+{
+	[default_interface]
+	runtimeclass MenuEntry
+	{
+		Microsoft.UI.Xaml.Controls.NavigationViewItem Item;
+		Windows.UI.Xaml.Interop.TypeName PageTypeName;
+		String Name;
+	}
+}
