@@ -32,6 +32,5 @@ namespace winrt::winrt_mvvm::implementation
 
     void HomePage::myButton_Click(IInspectable const&, RoutedEventArgs const&)
     {
-        myButton().Content(box_value(L"Clicked"));
     }
 }

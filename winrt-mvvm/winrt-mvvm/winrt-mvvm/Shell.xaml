@@ -13,7 +13,18 @@
                         BackRequested="{x:Bind ViewModel.OnBackRequested, Mode=OneWay}"
                         ItemInvoked="{x:Bind ViewModel.OnNavigtationItemInvoked, Mode=OneWay}" 
                         MenuItemsSource="{x:Bind ViewModel.NavigationItems, Mode=TwoWay}"
-                        SelectedItem="{x:Bind ViewModel.SelectedItem, Mode=OneWay}"/>
+                        SelectedItem="{x:Bind ViewModel.SelectedItem, Mode=OneWay}"
+                        PaneDisplayMode="LeftCompact">
+            <NavigationView.MenuItemTemplate>
+                <DataTemplate x:DataType="local:MenuEntry">
+                    <StackPanel Orientation="Horizontal">
+                        <SymbolIcon Symbol="{x:Bind Symbol}" Margin="0,0,15,0"/>
+                        <TextBlock Text="{x:Bind Name}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </NavigationView.MenuItemTemplate>
+        </NavigationView>
+        
 
     </Grid>
 </UserControl>

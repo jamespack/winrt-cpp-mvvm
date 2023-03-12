@@ -18,7 +18,7 @@ namespace winrt_mvvm
 		void OnBackRequested(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewBackRequestedEventArgs args);
 		Windows.Foundation.Collections.IObservableVector<MenuEntry> NavigationItems;
 		Microsoft.UI.Xaml.Controls.Frame NavigationFrame;
-		Microsoft.UI.Xaml.Controls.NavigationViewItem SelectedItem;
+		MenuEntry SelectedItem;
 		Boolean IsBackEnabled;
 	}
 }

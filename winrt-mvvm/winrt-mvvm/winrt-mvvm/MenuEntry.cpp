@@ -31,9 +31,25 @@ namespace winrt::winrt_mvvm::implementation
     }
 
     MenuEntry::MenuEntry(winrt::Microsoft::UI::Xaml::Controls::NavigationViewItem const& item, 
-        winrt::Windows::UI::Xaml::Interop::TypeName  const& xamlPageType, hstring const& name) : _item(item), _xamlType(xamlPageType), _name(name)
+        winrt::Windows::UI::Xaml::Interop::TypeName  const& xamlPageType,
+        hstring const& name,
+        winrt::Microsoft::UI::Xaml::Controls::Symbol symbol) : _item(item), _xamlType(xamlPageType), _name(name),_symbol(symbol)
     {
 
+    }
+
+    void MenuEntry::Symbol(winrt::Microsoft::UI::Xaml::Controls::Symbol const& symbol)
+    {
+        _symbol = symbol;
+    }
+    winrt::Microsoft::UI::Xaml::Controls::Symbol MenuEntry::Symbol() const
+    {
+        return _symbol;
+    }
+
+    bool MenuEntry::operator==(winrt_mvvm::MenuEntry const& other)
+    {
+        return this->PageTypeName().Name == other.PageTypeName().Name;
     }
 
 }

@@ -54,8 +54,8 @@ namespace winrt::winrt_mvvm::implementation
         winrt::Windows::Foundation::Collections::IObservableVector<winrt::winrt_mvvm::MenuEntry> NavigationItems() const;
         void NavigationItems(winrt::Windows::Foundation::Collections::IObservableVector<winrt::winrt_mvvm::MenuEntry> const& items);
     
-        winrt::Microsoft::UI::Xaml::Controls::NavigationViewItem SelectedItem() const;
-        void SelectedItem(winrt::Microsoft::UI::Xaml::Controls::NavigationViewItem const& item);
+        winrt_mvvm::MenuEntry SelectedItem() const;
+        void SelectedItem(winrt_mvvm::MenuEntry const& item);
 
     private:
         winrt::Windows::Foundation::Collections::IObservableVector<winrt::winrt_mvvm::MenuEntry> _navigationItems;
@@ -65,7 +65,7 @@ namespace winrt::winrt_mvvm::implementation
         winrt::Microsoft::UI::Xaml::Controls::Frame _navigationFrame;
         bool _isCommandEnabled = true;
         bool _isBackEnabled = false;
-        winrt::Microsoft::UI::Xaml::Controls::NavigationViewItem _selectedItem;
+        winrt_mvvm::MenuEntry _selectedItem;
     };
 }
 namespace winrt::winrt_mvvm::factory_implementation
