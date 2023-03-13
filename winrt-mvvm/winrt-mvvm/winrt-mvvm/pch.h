@@ -35,4 +35,7 @@
 #include <winrt/Microsoft.UI.Composition.Interop.h>
 #include <DispatcherQueue.h>
 #include <winrt/Windows.UI.Composition.h>
+#include <winrt/Microsoft.UI.Windowing.h>
+#include <microsoft.ui.xaml.window.h>
+#include <winrt/Microsoft.UI.Interop.h>
 #include "HomePage.xaml.h"

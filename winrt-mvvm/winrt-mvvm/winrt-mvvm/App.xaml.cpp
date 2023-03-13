@@ -6,7 +6,7 @@
 #include "App.xaml.h"
 #include "MainWindow.xaml.h"
 #include "Shell.xaml.h"
-
+#include <winrt/Microsoft.UI.Xaml.Controls.h>
 
 using namespace winrt;
 using namespace Windows::Foundation;

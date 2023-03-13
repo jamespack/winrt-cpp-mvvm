@@ -21,6 +21,24 @@ namespace winrt::winrt_mvvm::implementation
     MainWindow::MainWindow()
     {
         InitializeComponent();
+        auto nativeWindow = this->try_as<IWindowNative>();
+        HWND window;
+        nativeWindow.get()->get_WindowHandle(&window);
+        auto windowId = winrt::Microsoft::UI::GetWindowIdFromWindow(window);
+        
+
+        auto appWindow = winrt::Microsoft::UI::Windowing::AppWindow::GetFromWindowId(windowId);
+        auto presenter = appWindow.Presenter();
+        auto overLapped = presenter.try_as<winrt::Microsoft::UI::Windowing::IOverlappedPresenter>();
+        overLapped.SetBorderAndTitleBar(true, false);
+        auto titleBar = appWindow.TitleBar();
+        titleBar.ButtonBackgroundColor(winrt::Microsoft::UI::Colors::Transparent());
+        titleBar.BackgroundColor(winrt::Microsoft::UI::Colors::Transparent());
+        titleBar.ExtendsContentIntoTitleBar(true);
+        titleBar.ButtonForegroundColor(winrt::Microsoft::UI::Colors::White());
+        titleBar.PreferredHeightOption(winrt::Microsoft::UI::Windowing::TitleBarHeightOption::Standard);
+        
+
     }
     bool MainWindow::TrySetMicaBackdrop()
     {
