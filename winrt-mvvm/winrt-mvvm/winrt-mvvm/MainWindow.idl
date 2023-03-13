@@ -11,6 +11,7 @@ namespace winrt_mvvm
         void OnActivated(IInspectable sender, Microsoft.UI.Xaml.WindowActivatedEventArgs  args);
         void OnClosed(IInspectable sender, Microsoft.UI.Xaml.WindowEventArgs args);
         void OnThemeChanged(Microsoft.UI.Xaml.FrameworkElement element, IInspectable sender);
-
+        void OnSizeChanged(IInspectable sender, Microsoft.UI.Xaml.WindowSizeChangedEventArgs args);
+        
     }
 }

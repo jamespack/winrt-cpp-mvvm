@@ -25,21 +25,36 @@ namespace winrt::winrt_mvvm::implementation
         HWND window;
         nativeWindow.get()->get_WindowHandle(&window);
         auto windowId = winrt::Microsoft::UI::GetWindowIdFromWindow(window);
+        _appWindow = winrt::Microsoft::UI::Windowing::AppWindow::GetFromWindowId(windowId);
         
+        auto presenter = _appWindow.Presenter();
+        auto overLapped = presenter.try_as<winrt::Microsoft::UI::Windowing::OverlappedPresenter>();
+        auto a = SetWindowLongPtrW(window, GWL_EXSTYLE, WS_EX_APPWINDOW);
+        overLapped.SetBorderAndTitleBar(true, true);
+        
+    }
 
-        auto appWindow = winrt::Microsoft::UI::Windowing::AppWindow::GetFromWindowId(windowId);
-        auto presenter = appWindow.Presenter();
-        auto overLapped = presenter.try_as<winrt::Microsoft::UI::Windowing::IOverlappedPresenter>();
-        overLapped.SetBorderAndTitleBar(true, false);
-        auto titleBar = appWindow.TitleBar();
+    void MainWindow::SetTitleBar()
+    {
+        auto titleBar = _appWindow.TitleBar();
         titleBar.ButtonBackgroundColor(winrt::Microsoft::UI::Colors::Transparent());
         titleBar.BackgroundColor(winrt::Microsoft::UI::Colors::Transparent());
         titleBar.ExtendsContentIntoTitleBar(true);
         titleBar.ButtonForegroundColor(winrt::Microsoft::UI::Colors::White());
         titleBar.PreferredHeightOption(winrt::Microsoft::UI::Windowing::TitleBarHeightOption::Standard);
-        
+        titleBar.IconShowOptions(winrt::Microsoft::UI::Windowing::IconShowOptions::HideIconAndSystemMenu);
+        winrt::Windows::Graphics::RectInt32 dragRectangle;
+        dragRectangle.Height = 40;
+        dragRectangle.Width = _width;
+        dragRectangle.X = 0;
+        dragRectangle.Y = 0;
+
+        std::array<winrt::Windows::Graphics::RectInt32, 1> dragRectangles;
+        dragRectangles[0] = dragRectangle;
+        titleBar.SetDragRectangles(dragRectangles);
 
     }
+
     bool MainWindow::TrySetMicaBackdrop()
     {
         if (!MicaController::IsSupported())
@@ -130,5 +145,13 @@ namespace winrt::winrt_mvvm::implementation
         }
     }
 
+    void MainWindow::OnSizeChanged(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::WindowSizeChangedEventArgs const& args)
+    {
+        auto xamlRoot = this->Content().XamlRoot();
+        _width = args.Size().Width;
+        _height = args.Size().Height;
+    }
 
 }
+
+

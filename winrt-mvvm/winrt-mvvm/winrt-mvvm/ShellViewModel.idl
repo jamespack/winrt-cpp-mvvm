@@ -11,6 +11,7 @@ namespace winrt_mvvm
 		void Button_Click(IInspectable sender, Microsoft.UI.Xaml.RoutedEventArgs e);
 		Microsoft.UI.Xaml.Input.ICommand ShellCommand;
 		Boolean IsCommandEnabled;
+		Int32 Width;
 
 		void OnShellLoaded(IInspectable sender, Microsoft.UI.Xaml.RoutedEventArgs args);
 		void OnFrameNavigated(IInspectable sender, Microsoft.UI.Xaml.Navigation.NavigationEventArgs args);

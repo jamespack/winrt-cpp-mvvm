@@ -12,7 +12,9 @@ namespace winrt::winrt_mvvm::implementation
     struct ShellViewModel : ShellViewModelT<ShellViewModel, winrt_mvvm::implementation::ViewModelBase>
     {
         ShellViewModel();
-        
+        uint32_t Width();
+        void Width(uint32_t const& width);
+
         //Header Text
         hstring HeaderText();
         void HeaderText(hstring const& value);
@@ -66,6 +68,8 @@ namespace winrt::winrt_mvvm::implementation
         bool _isCommandEnabled = true;
         bool _isBackEnabled = false;
         winrt_mvvm::MenuEntry _selectedItem;
+        uint32_t _width;
+
     };
 }
 namespace winrt::winrt_mvvm::factory_implementation

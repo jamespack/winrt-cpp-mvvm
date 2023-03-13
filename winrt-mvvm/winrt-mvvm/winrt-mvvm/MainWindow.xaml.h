@@ -12,6 +12,7 @@ namespace winrt::winrt_mvvm::implementation
         void OnActivated(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::WindowActivatedEventArgs const& args);
         void OnClosed(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::WindowEventArgs const& args);
         void OnThemeChanged(winrt::Microsoft::UI::Xaml::FrameworkElement const& element, winrt::Windows::Foundation::IInspectable const& sender);
+        void OnSizeChanged(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::WindowSizeChangedEventArgs const& args);
 
         bool TrySetMicaBackdrop();
     private:
@@ -22,11 +23,12 @@ namespace winrt::winrt_mvvm::implementation
         winrt::Microsoft::UI::Xaml::Window::Closed_revoker m_closedRevoker;
         winrt::Microsoft::UI::Xaml::FrameworkElement::ActualThemeChanged_revoker m_themeChangedRevoker;
         winrt::Microsoft::UI::Xaml::FrameworkElement m_rootElement{ nullptr };
-
+        uint32_t _height;
+        uint32_t _width;
         void SetupSystemBackdropConfiguration();
         winrt::Microsoft::UI::Composition::SystemBackdrops::SystemBackdropTheme MainWindow::ConvertToSystemBackdropTheme(winrt::Microsoft::UI::Xaml::ElementTheme const& theme);
-
-
+        winrt::Microsoft::UI::Windowing::AppWindow _appWindow{ nullptr };
+        void SetTitleBar();
     };
 }
 

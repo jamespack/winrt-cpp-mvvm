@@ -7,7 +7,7 @@
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Loaded="{x:Bind ViewModel.OnShellLoaded}" Background="Transparent">
+    mc:Ignorable="d" Loaded="{x:Bind ViewModel.OnShellLoaded}" Background="Transparent" >
     <Grid>
         <NavigationView IsBackEnabled="{x:Bind ViewModel.IsBackEnabled, Mode=OneWay}"
                         Content="{x:Bind ViewModel.NavigationFrame, Mode=OneWay}"
@@ -15,10 +15,10 @@
                         ItemInvoked="{x:Bind ViewModel.OnNavigtationItemInvoked, Mode=OneWay}" 
                         MenuItemsSource="{x:Bind ViewModel.NavigationItems, Mode=TwoWay}"
                         SelectedItem="{x:Bind ViewModel.SelectedItem, Mode=OneWay}"
-                        IsTitleBarAutoPaddingEnabled="False"
-                        Background="Transparent">
+                        Background="Transparent"
+                        HorizontalAlignment="Stretch">
             <muxc:NavigationView.Resources>
-                <Thickness x:Key="NavigationViewContentMargin">0,32,0,0</Thickness>
+                <Thickness x:Key="NavigationViewContentMargin">10,32,10,10</Thickness>
                 <SolidColorBrush x:Key="NavigationViewContentBackground" Color="Transparent" />
                 <SolidColorBrush x:Key="NavigationViewContentGridBorderBrush" Color="Transparent" />
             </muxc:NavigationView.Resources>
@@ -35,25 +35,6 @@
         </NavigationView>
 
       
-        <Border
-            x:Name="AppTitleBar"
-            Height="40"
-            Margin="50,0,0,0"
-            Padding="8,0,0,0"
-            VerticalAlignment="Top"
-            Background="Transparent">
-            <StackPanel
-                Grid.ColumnSpan="1"
-                Margin="0,15,8,8"
-                VerticalAlignment="Center"
-                Orientation="Horizontal">
-                <Image Width="16" Source="ms-appx:///Assets/Icon/AppIcon.png" />
-                <TextBlock
-                    Margin="20,0,0,0"
-                    Style="{StaticResource CaptionTextBlockStyle}"
-                    Text="WinRT Cpp Mvvm" />
-            </StackPanel>
-        </Border>
 
     </Grid>
 </UserControl>

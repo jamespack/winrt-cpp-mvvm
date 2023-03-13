@@ -39,6 +39,12 @@ App::App()
 #endif
 }
 
+winrt::Microsoft::UI::Xaml::Window& App::MainAppWindow()
+{
+    return window;
+}
+
+
 /// <summary>
 /// Invoked when the application is launched.
 /// </summary>
@@ -46,7 +52,8 @@ App::App()
 void App::OnLaunched(LaunchActivatedEventArgs const&)
 {
     window = make<MainWindow>();
-    window.ExtendsContentIntoTitleBar(true);
+ 
+    //window.ExtendsContentIntoTitleBar(true);
     window.try_as<winrt_mvvm::MainWindow>().TrySetMicaBackdrop();
     window.Content(winrt::make<Shell>());
     window.Activate();

@@ -16,7 +16,7 @@ namespace winrt::winrt_mvvm::implementation
         Shell();
         winrt_mvvm::ShellViewModel ViewModel() const;
         void ViewModel(winrt_mvvm::ShellViewModel const& value);
-
+        void OnAppWindowSizeChanged(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::WindowSizeChangedEventArgs const& args);
     private:
         winrt_mvvm::ShellViewModel _viewModel;
     };

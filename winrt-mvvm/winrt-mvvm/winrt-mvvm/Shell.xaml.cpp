@@ -6,6 +6,7 @@
 #if __has_include("Shell.g.cpp")
 #include "Shell.g.cpp"
 #endif
+#include "App.xaml.h"
 
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
@@ -18,6 +19,8 @@ namespace winrt::winrt_mvvm::implementation
     Shell::Shell()
     {
         InitializeComponent();
+        auto app = Application::Current().try_as<App>();
+        app.get()->MainAppWindow().SizeChanged({this, &Shell::OnAppWindowSizeChanged});
     }
 
 
@@ -28,6 +31,12 @@ namespace winrt::winrt_mvvm::implementation
     void Shell::ViewModel(winrt_mvvm::ShellViewModel const& value)
     {
         _viewModel = value;
+    }
+
+    void Shell::OnAppWindowSizeChanged(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::WindowSizeChangedEventArgs const& args)
+    {
+        auto size = args.Size();
+        Width(size.Width);
     }
 
 }

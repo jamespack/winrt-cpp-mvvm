@@ -166,4 +166,14 @@ namespace winrt::winrt_mvvm::implementation
 		SetProperty(_selectedItem, item);
 	}
 
+	uint32_t ShellViewModel::Width()
+	{
+		return _width;
+	}
+	void ShellViewModel::Width(uint32_t const& width)
+	{
+		SetProperty(_width, width);
+	}
+
+
 }

@@ -7,5 +7,6 @@ namespace winrt_mvvm
     {
         Shell();
         ShellViewModel ViewModel;
+        void OnAppWindowSizeChanged(IInspectable sender, Microsoft.UI.Xaml.WindowSizeChangedEventArgs args);
     }
 }
