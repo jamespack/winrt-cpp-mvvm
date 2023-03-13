@@ -7,5 +7,10 @@ namespace winrt_mvvm
     runtimeclass MainWindow : Microsoft.UI.Xaml.Window
     {
         MainWindow();
+        Boolean TrySetMicaBackdrop();
+        void OnActivated(IInspectable sender, Microsoft.UI.Xaml.WindowActivatedEventArgs  args);
+        void OnClosed(IInspectable sender, Microsoft.UI.Xaml.WindowEventArgs args);
+        void OnThemeChanged(Microsoft.UI.Xaml.FrameworkElement element, IInspectable sender);
+
     }
 }

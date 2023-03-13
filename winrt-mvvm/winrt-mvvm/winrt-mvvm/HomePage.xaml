@@ -6,7 +6,13 @@
     xmlns:local="using:winrt_mvvm"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    
+    mc:Ignorable="d" Background="Transparent">
+    <Grid Style="{StaticResource CardStyle}">
+        <ScrollViewer Padding="{StaticResource DocumentationPageContentPadding}" BorderThickness="0" CanContentRenderOutsideBounds="True">
 
-    <TextBlock Text="HomePage" Style="{StaticResource HeaderTextBlockStyle}"/>
+            <TextBlock Margin="30" Text="HomePage" Style="{StaticResource HeaderTextBlockStyle}"/>
+        </ScrollViewer>
+    </Grid>
 </Page>

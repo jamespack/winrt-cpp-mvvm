@@ -7,6 +7,7 @@
 #include "MainWindow.xaml.h"
 #include "Shell.xaml.h"
 
+
 using namespace winrt;
 using namespace Windows::Foundation;
 using namespace Microsoft::UI::Xaml;
@@ -45,6 +46,8 @@ App::App()
 void App::OnLaunched(LaunchActivatedEventArgs const&)
 {
     window = make<MainWindow>();
+    window.ExtendsContentIntoTitleBar(true);
+    window.try_as<winrt_mvvm::MainWindow>().TrySetMicaBackdrop();
     window.Content(winrt::make<Shell>());
     window.Activate();
 }
