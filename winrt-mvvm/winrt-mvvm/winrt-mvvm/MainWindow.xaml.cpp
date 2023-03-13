@@ -29,7 +29,6 @@ namespace winrt::winrt_mvvm::implementation
         
         auto presenter = _appWindow.Presenter();
         auto overLapped = presenter.try_as<winrt::Microsoft::UI::Windowing::OverlappedPresenter>();
-        auto a = SetWindowLongPtrW(window, GWL_EXSTYLE, WS_EX_APPWINDOW);
         overLapped.SetBorderAndTitleBar(true, true);
         
     }
@@ -147,7 +146,6 @@ namespace winrt::winrt_mvvm::implementation
 
     void MainWindow::OnSizeChanged(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::WindowSizeChangedEventArgs const& args)
     {
-        auto xamlRoot = this->Content().XamlRoot();
         _width = args.Size().Width;
         _height = args.Size().Height;
     }
